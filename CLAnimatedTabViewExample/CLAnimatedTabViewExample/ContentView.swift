@@ -9,8 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        let viewModel = CLAnimatedTabViewModel(tabNames: ["Tab 1", "Tab 2", "Tab 3"])
-        CLAnimatedTabView(viewModel: viewModel, views: [Text("1"), Text("2"), Text("3")])
+        let viewModel = CLAnimatedTabViewModel(tabBarHeight: 69.0, tabNames: ["Tab 1", "Tab 2", "Tab 3"])
+        CLAnimatedTabView(viewModel: viewModel,
+            Text("1"),
+            Text("2"),
+            Text("3")
+        )
     }
 }
 

@@ -15,13 +15,18 @@
 import Foundation
 import SwiftUI
 
-struct CLAnimatedTabView<Content: View>: View {
+public struct CLAnimatedTabView<Content: View>: View {
     
     @State var currentTab: Int = 0
     @ObservedObject var viewModel: CLAnimatedTabViewModel
     var views: [Content]
     
-    var body: some View {
+    public init(viewModel: CLAnimatedTabViewModel, _ views: Content...) {
+        self.viewModel = viewModel
+        self.views = views
+    }
+    
+    public var body: some View {
         ZStack(alignment: .top) {
             TabView(selection: $currentTab) {
                 ForEach(views.indices, id: \.self) { index in
@@ -34,7 +39,8 @@ struct CLAnimatedTabView<Content: View>: View {
             .padding(.top, viewModel.tabBarHeight)
             
             TabBarView(currentTab: $currentTab,
-                       tabBarItemNames: $viewModel.tabNames)
+                       tabBarItemNames: $viewModel.tabNames,
+                       tabBarItemViewModel: $viewModel.tabBarItemViewModel)
             .frame(height: viewModel.tabBarHeight)
             .cornerRadius(0)
             .shadow(color: Color.black.opacity(viewModel.shadowOpacity),
@@ -53,6 +59,7 @@ struct TabBarView: View {
     @Binding var currentTab: Int
     @Namespace var namespace
     @Binding var tabBarItemNames: [String]
+    @Binding var tabBarItemViewModel: CLAnimatedTabViewItemModel
     
     var body: some View {
         HStack(spacing: 0) {
@@ -61,6 +68,7 @@ struct TabBarView: View {
                     content: { index, name in
                 TabBarItem(currentTab: $currentTab,
                            isSelected: index == 0,
+                           viewModel: $tabBarItemViewModel,
                            name: name,
                            tab: index,
                            namespace: namespace)
@@ -74,16 +82,12 @@ struct TabBarView: View {
 struct TabBarItem: View {
     struct Constants {
         static let underlineId = "underline"
-        static let barHeight = 2.0
-        static let font = Font.system(size: 15.0)
-        static let backgroundColor = Color.white
-        static let textInactiveColor = Color.brown
-        static let textActiveColor = Color.blue
         static let transitionScale = 1.0
     }
     
     @Binding var currentTab: Int
     @State var isSelected: Bool = false
+    @Binding var viewModel: CLAnimatedTabViewItemModel
     
     var name: String
     var tab: Int
@@ -98,7 +102,7 @@ struct TabBarItem: View {
             VStack {
                 Spacer()
                 Text(name)
-                    .font(Constants.font)
+                    .font(viewModel.font)
                     .frame(alignment: .center)
                     .onChange(of: currentTab) {
                         isSelected = (currentTab == tab)
@@ -109,28 +113,27 @@ struct TabBarItem: View {
                     if currentTab == tab {
                         Capsule(style: .continuous)
                             .fill(Color.blue)
-                            .frame(height: Constants.barHeight)
+                            .frame(height: viewModel.capsuleHeight)
                             .matchedGeometryEffect(id: Constants.underlineId,
                                                    in: namespace)
                             .transition(.asymmetric(insertion: .scale(scale: Constants.transitionScale), removal: .slide))
                     } else {
                         Capsule()
                             .fill(Color.clear)
-                            .frame(height: Constants.barHeight)
+                            .frame(height: viewModel.capsuleHeight)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .bottom)
             }
         })
-        .buttonStyle(NotificationCenterTabViewButtonStyle())
+        .buttonStyle(CLTabViewButtonStyle())
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .animation(.spring(), value: currentTab)
-        .background(Constants.backgroundColor)
-        .accentColor(isSelected ? Constants.textActiveColor : Constants.textInactiveColor)
+        .accentColor(isSelected ? viewModel.activeTextColor : viewModel.inactiveTextColor)
     }
 }
 
-struct NotificationCenterTabViewButtonStyle: ButtonStyle {
+struct CLTabViewButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .contentShape(Rectangle())
