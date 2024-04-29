@@ -7,6 +7,17 @@
 
 import SwiftUI
 
+/// View Model used for CLAnimatedTabView
+/// - Parameters:
+///     - tabBarHeight: Height for the tab bar
+///     - backgroundColor: BackgroundColor for entire view
+///     - displayTabBarShadow: Determines whether tab bar will have a drop shadow
+///     - shadowOpacity: Opacity of tab bar drop shadow
+///     - shadowRadius: Radius for tab bar drop shadow
+///     - shadowX: X offset of tab bar drop shadow
+///     - shadowY: Y offset of tab bar drop shadow
+///     - tabNames: String array of names for tab bar items
+///     - tabBarItemViewModel: View model for tab bar items
 public class CLAnimatedTabViewModel: ObservableObject {
     /// Height for tab bar
     /// # Notes #
