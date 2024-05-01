@@ -1,0 +1,15 @@
+{
+  "originHash" : "df595fb7774d2639f6f978d4f8b90ef6351cb874066e3999ff3bd6f6a6fa9b2f",
+  "pins" : [
+    {
+      "identity" : "clanimatedtabview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cjlarsen/CLAnimatedTabView",
+      "state" : {
+        "revision" : "d8f33f57d4d57ef2310872ce07ac343877063e65",
+        "version" : "2.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		931D18842BE1D9E4000C0683 /* CLAnimatedTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 931D18832BE1D9E4000C0683 /* CLAnimatedTabView */; };
 		93FDA7142BCCAC4500EF52CC /* CLAnimatedTabViewExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FDA7132BCCAC4500EF52CC /* CLAnimatedTabViewExampleApp.swift */; };
 		93FDA7162BCCAC4500EF52CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FDA7152BCCAC4500EF52CC /* ContentView.swift */; };
 		93FDA7182BCCAC4700EF52CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FDA7172BCCAC4700EF52CC /* Assets.xcassets */; };
 		93FDA71B2BCCAC4700EF52CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FDA71A2BCCAC4700EF52CC /* Preview Assets.xcassets */; };
-		93FDA7222BCCAC7600EF52CC /* CLAnimatedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FDA7212BCCAC7600EF52CC /* CLAnimatedTabView.swift */; };
-		93FDA7242BCCACBC00EF52CC /* CLAnimatedTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FDA7232BCCACBC00EF52CC /* CLAnimatedTabViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +20,6 @@
 		93FDA7152BCCAC4500EF52CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		93FDA7172BCCAC4700EF52CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93FDA71A2BCCAC4700EF52CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		93FDA7212BCCAC7600EF52CC /* CLAnimatedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLAnimatedTabView.swift; sourceTree = "<group>"; };
-		93FDA7232BCCACBC00EF52CC /* CLAnimatedTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLAnimatedTabViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931D18842BE1D9E4000C0683 /* CLAnimatedTabView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,8 +57,6 @@
 				93FDA7152BCCAC4500EF52CC /* ContentView.swift */,
 				93FDA7172BCCAC4700EF52CC /* Assets.xcassets */,
 				93FDA7192BCCAC4700EF52CC /* Preview Content */,
-				93FDA7212BCCAC7600EF52CC /* CLAnimatedTabView.swift */,
-				93FDA7232BCCACBC00EF52CC /* CLAnimatedTabViewModel.swift */,
 			);
 			path = CLAnimatedTabViewExample;
 			sourceTree = "<group>";
@@ -89,6 +85,9 @@
 			dependencies = (
 			);
 			name = CLAnimatedTabViewExample;
+			packageProductDependencies = (
+				931D18832BE1D9E4000C0683 /* CLAnimatedTabView */,
+			);
 			productName = CLAnimatedTabViewExample;
 			productReference = 93FDA7102BCCAC4500EF52CC /* CLAnimatedTabViewExample.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 93FDA7072BCCAC4500EF52CC;
+			packageReferences = (
+				931D18822BE1D9E4000C0683 /* XCRemoteSwiftPackageReference "CLAnimatedTabView" */,
+			);
 			productRefGroup = 93FDA7112BCCAC4500EF52CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,10 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93FDA7242BCCACBC00EF52CC /* CLAnimatedTabViewModel.swift in Sources */,
 				93FDA7162BCCAC4500EF52CC /* ContentView.swift in Sources */,
 				93FDA7142BCCAC4500EF52CC /* CLAnimatedTabViewExampleApp.swift in Sources */,
-				93FDA7222BCCAC7600EF52CC /* CLAnimatedTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +352,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		931D18822BE1D9E4000C0683 /* XCRemoteSwiftPackageReference "CLAnimatedTabView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cjlarsen/CLAnimatedTabView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		931D18832BE1D9E4000C0683 /* CLAnimatedTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 931D18822BE1D9E4000C0683 /* XCRemoteSwiftPackageReference "CLAnimatedTabView" */;
+			productName = CLAnimatedTabView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 93FDA7082BCCAC4500EF52CC /* Project object */;
 }
