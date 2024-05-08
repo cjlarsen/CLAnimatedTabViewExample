@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/cjlarsen/CLAnimatedTabView",
       "state" : {
-        "branch" : "dev",
-        "revision" : "5fab619acc377d293da27cefbee006add1ab92fa"
+        "revision" : "9066a1b1b37deb358b47cf807f7fe653be9674b3",
+        "version" : "3.0.0"
       }
     }
   ],
